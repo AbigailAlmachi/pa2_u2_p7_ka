@@ -16,7 +16,7 @@ public class Tratamiento {
     @SequenceGenerator(name = "tratamiento_seq", sequenceName = "tratamiento_seq_db", allocationSize = 1)
     @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "tratamiento_seq")
     @Column (name = "trat_id")
-    private String id;
+    private Long id;
 
     @Column (name = "trat_nombre")
     private String nombre;
@@ -30,7 +30,7 @@ public class Tratamiento {
     @Column (name = "trat_duracion")
     private String duracion;
     
-    public String getId() {
+    public Long getId() {
         return id;
     }
     public String getNombre() {
@@ -45,7 +45,7 @@ public class Tratamiento {
     public String getDuracion() {
         return duracion;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setNombre(String nombre) {

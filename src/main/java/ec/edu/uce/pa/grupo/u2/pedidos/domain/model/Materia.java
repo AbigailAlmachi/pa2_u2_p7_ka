@@ -16,7 +16,7 @@ public class Materia {
     @SequenceGenerator(name = "materia_seq", sequenceName = "materia_seq_db", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "materia_seq")
     @Column(name = "matt_id")
-    private String id;
+    private Long id;
 
     @Column(name = "matt_nombre")
     private String nombre;
@@ -30,7 +30,7 @@ public class Materia {
     @Column(name = "matt_carrera")
     private String carrera;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -50,7 +50,7 @@ public class Materia {
         return carrera;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -16,7 +16,7 @@ public class Libro {
     @SequenceGenerator (name = "libro_seq", sequenceName = "libro_seq_db", allocationSize = 1)
     @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "libro_seq")
     @Column (name = "libb_id")
-    private String id;
+    private Long id;
 
     @Column (name = "libb_titulo")
     private String titulo;
@@ -30,7 +30,7 @@ public class Libro {
     @Column (name = "libb_precio")
     private double precio;
     
-    public String getId() {
+    public Long getId() {
         return id;
     }
     public String getTitulo() {
@@ -45,7 +45,7 @@ public class Libro {
     public double getPrecio() {
         return precio;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setTitulo(String titulo) {

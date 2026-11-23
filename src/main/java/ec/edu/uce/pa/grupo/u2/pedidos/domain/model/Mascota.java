@@ -16,7 +16,7 @@ public class Mascota {
     @SequenceGenerator (name = "mascota_seq", sequenceName = "mascota_seq_db", allocationSize = 1)
     @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "mascota_seq")
     @Column (name = "mass_id")
-    private String id; 
+    private Long id; 
     
     @Column (name = "mass_nombre")
     private String nombre;
@@ -31,7 +31,7 @@ public class Mascota {
     private String color;
 
     
-    public String getId() {
+    public Long getId() {
         return id;
     }
     public String getNombre() {
@@ -46,7 +46,7 @@ public class Mascota {
     public String getColor() {
         return color;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setNombre(String nombre) {

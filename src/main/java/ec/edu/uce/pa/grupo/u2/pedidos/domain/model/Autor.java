@@ -16,7 +16,7 @@ public class Autor {
     @SequenceGenerator(name = "autor_seq", sequenceName = "autor_seq_db", allocationSize = 1)
     @GeneratedValue (strategy = GenerationType.SEQUENCE, generator =  "autor_seq")
     @Column (name = "autt_id")
-    private String id;
+    private Long id;
 
     @Column (name = "autt_nombre")
     private String nombre;
@@ -31,7 +31,7 @@ public class Autor {
     private String fechaFallecimiento;
 
     
-    public String getId() {
+    public Long getId() {
         return id;
     }
     public String getNombre() {
@@ -46,7 +46,7 @@ public class Autor {
     public String getFechaFallecimiento() {
         return fechaFallecimiento;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setNombre(String nombre) {
