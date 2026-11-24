@@ -18,7 +18,7 @@ public class Pedido {
     @SequenceGenerator(name = "pedido_seq", sequenceName = "pedido_seq_db", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pedido_seq")
     @Column(name = "pedd_id") // nombre de la columna en la base de datos
-    private Long id;
+    private String id;
 
     @Column(name = "pedd_producto") // nombre de la columna en la base de datos
     private String producto;
@@ -26,15 +26,19 @@ public class Pedido {
     @Column(name = "pedd_precio") // nombre de la columna en la base de datos
     private double precio;
 
+
     @Column(name = "pedd_fecha") // nombre de la columna en la base de datos
     private LocalDateTime fecha;
+
+    @Column(name = "pedd_numero") // nombre de la columna en la base de datos
+    private String numero;
     // Getters and Setters
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -60,6 +64,22 @@ public class Pedido {
 
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido [id=" + id + ", producto=" + producto + ", precio=" + precio + ", fecha=" + fecha + ", getId()="
+                + getId() + ", getProducto()=" + getProducto() + ", getPrecio()=" + getPrecio() + ", getFecha()="
+                + getFecha() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+                + super.toString() + "]";
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
 }
