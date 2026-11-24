@@ -30,11 +30,11 @@ public class Pedido {
     private LocalDateTime fecha;
     // Getters and Setters
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
