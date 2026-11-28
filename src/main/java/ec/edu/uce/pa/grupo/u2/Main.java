@@ -1,5 +1,7 @@
 package ec.edu.uce.pa.grupo.u2;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import ec.edu.uce.pa.grupo.u2.pedidos.application.PedidoService;
@@ -23,9 +25,19 @@ public class Main implements QuarkusApplication {
     public int run(String... args) throws Exception {
 
         System.out.println("Hello from Quarkus!");
+        Pedido pedido = new Pedido();
 
+        pedido.setProducto("Laptop HP");
+        pedido.setPrecio(850.50);
+        pedido.setFecha(LocalDateTime.now());
+        pedido.setNumero("PED-001");
+
+        pedidoService.guardar(pedido);
+
+        /* 
         Optional<Pedido> pedido2 = this.pedidoService.buscarPorId("2");
 
+    
         if (pedido2.isPresent()) {
             System.out.println("Pedido encontrado: " + pedido2.get());
         } else {
@@ -40,6 +52,24 @@ public class Main implements QuarkusApplication {
         } else {
             System.out.println("Pedido no encontrado por numero");
         }
+            
+        
+        List<Pedido> lp = this.pedidoService.buscarTodos();
+
+        lp.forEach(System.out::println);*/
+
+         Optional<Pedido> pedidoByNumberNativo =
+                this.pedidoService.buscarPorNumeroNativo("PED-001");
+
+        if (pedidoByNumberNativo.isPresent()) {
+            System.out.println("Pedido encontrado por numero: " + pedidoByNumberNativo.get());
+        } else {
+            System.out.println("Pedido no encontrado por numero");
+        }
+
+         List<Pedido> lp = this.pedidoService.buscarTodosNativo();
+
+        lp.forEach(System.out::println);
 
         return 0;
     }

@@ -32,6 +32,15 @@ public class PedidoService {
         return this.pedidoRepoitory.readAll();
     }
 
+    
+    public Optional<Pedido> buscarPorNumeroNativo(String numero) {
+        return this.pedidoRepoitory.readByNumberNative(numero);
+    }
+
+    public List<Pedido> buscarTodosNativo() {
+        return this.pedidoRepoitory.readAllNative();
+    }
+
     public void actualizar(Pedido pedido) {
         this.pedidoRepoitory.update(pedido);
     }

@@ -8,6 +8,7 @@ import ec.edu.uce.pa.grupo.u2.pedidos.domain.repository.PedidoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 @ApplicationScoped
@@ -51,7 +52,7 @@ public class PedidoRepositoryImpl implements PedidoRepository {
             "SELECT p FROM Pedido p",
             Pedido.class
         );
-
+        
         return query.getResultList();
     }
 
@@ -64,5 +65,34 @@ public class PedidoRepositoryImpl implements PedidoRepository {
     public void delete(String id) {
         Optional<Pedido> pedido = this.read(id);
         pedido.ifPresent(this.entityManager::remove);
+    }
+
+    @Override
+    public Optional<Pedido> readByNumberNative(String numero) {
+       
+        Query query = this.entityManager.createNativeQuery(
+            "SELECT * FROM pedidos p WHERE p.pedd_numero = :numero",
+         Pedido.class
+        );
+
+        query.setParameter("numero", numero);
+
+        List<Pedido> resultados = query.getResultList();
+
+        if (resultados.isEmpty()) {
+        return Optional.empty();
+        }
+
+        return Optional.of(resultados.get(0));
+    }
+
+    @Override
+    public List<Pedido> readAllNative() {
+        Query query = this.entityManager.createNativeQuery(
+            "SELECT * FROM pedidos p",
+            Pedido.class
+        );
+
+        return query.getResultList();
     }
 }
